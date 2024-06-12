@@ -1,0 +1,56 @@
+pipeline {
+    agent any
+
+     stages {
+        stage('checkout') {
+           git checkout         
+        }
+       
+        stage('build') {
+           // Maven or Gradle
+           mvn clean package
+        }
+     
+        stage('test') {
+             mvn test
+        }
+
+        stage('scan') {
+             mvn sonar:sonar
+        }
+        
+        stage('artifactory') {
+
+        }
+
+        stage('dev') {
+             //connection to development server
+             //publish
+
+        }
+
+        stage('test') {
+             //connection to test server
+             //publish
+
+
+        }
+
+        stage('stage') {
+             //connection to stage server
+             //publish
+
+
+        }
+
+        stage('prod') {
+             //connection to prod server
+             //publish
+
+        }
+
+
+     
+     }
+}
+
